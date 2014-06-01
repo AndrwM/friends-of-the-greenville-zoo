@@ -1,0 +1,62 @@
+
+//----------------- Vars
+
+$orange: #f08d33;
+$blue: #3972b5;
+$green: #a4bd2f;
+$green-dark: #39450e;
+$gray-light: #b8b8b8;
+
+//----------------- Mixins
+
+@mixin ff-heading {
+  @font-face {
+    font-family: 'packard_antiquebold';
+    src: url('packardantique-bold.eot');
+    src: url('packardantique-bold.eot?#iefix') format('embedded-opentype'),
+         url('packardantique-bold.woff') format('woff'),
+         url('packardantique-bold.ttf') format('truetype'),
+         url('packardantique-bold.svg#packard_antiquebold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+@mixin ff-body {
+  font-family:'Open Sans', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+
+@mixin ff-body-bold {
+  font-family:'Open Sans', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+}
+
+@mixin fade {
+  @include transition-duration(.5s);
+}
+
+// https://github.com/michaelsacca/Compass-Placeholder-Text-Mixin
+@mixin input-placeholder {
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; } 
+}
+
+
+// http://css-tricks.com/conditional-media-query-mixins/
+@mixin breakpoint($point) {
+  @if $point == lrg {
+    @media (max-width: 1080px) { @content; }
+  }
+  @if $point == med {
+    @media (max-width: 940px) { @content; }
+  }
+  @else if $point == sm {
+    @media (max-width: 740px) { @content; }
+  }
+  @else if $point == mobile {
+    @media (max-width: 600px)  { @content; }
+  }
+}
