@@ -1,0 +1,30 @@
+
+.main-content > .container {
+
+  padding: 40px 20px;
+
+  & > .main {
+    width: 70%;
+    margin-right: 4%;
+    float: left;
+    h1,h2,h3,h4,h5,h6 {
+      margin-bottom: 10px;
+    }
+    p {
+      margin-bottom: 40px;
+    }
+    section.cta {
+      margin-top: 60px;
+    }
+  }
+
+  & > .rail {
+    width: 26%;
+    float: left;
+
+    & > * {
+      margin-bottom: 50px;
+    }
+
+  }
+}

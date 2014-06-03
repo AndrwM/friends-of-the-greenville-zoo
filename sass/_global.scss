@@ -1,2 +1,354 @@
+//----------------- Base
 
 * { position: relative; }
+
+::selection {
+  background: $green;
+  color: #fff;
+}
+
+::-moz-selection {
+  background: $green;
+  color: #fff;
+}
+
+textarea:focus, input:focus {
+  outline-color:$green;
+}
+
+.clearfix {
+  @include clearfix;
+}
+
+.seo {
+  text-indent: -9999px;
+  display: block;
+}
+
+a {
+  color: $blue;
+  text-decoration: none;
+}
+
+p {
+  line-height: 1.875em;
+  a {
+    text-decoration: underline;
+  }
+}
+
+h1 {
+  font-size: 65px;
+  @include ff-heading;
+  color: #fff;
+}
+
+h2 {
+  font-size: 40px;
+  @include ff-heading;
+  color: $green;
+}
+
+h3 {
+  font-size: 22px;
+  @include ff-body-bold;
+  color: $green;
+  text-transform: uppercase;
+}
+
+h4 {
+  font-size: 18px;
+  @include ff-body-bold;
+  color: $gray-light;
+  text-transform: uppercase;
+}
+
+h5 {
+  font-size: 16px;
+  @include ff-body-bold;
+  color: $gray-light;
+  text-transform: uppercase;
+}
+
+.btn {
+  text-transform: uppercase;
+  color: #fff;
+  @include ff-body-bold;
+  @include fade;
+  display: inline-block;
+  &.lrg {
+    font-size: 20px;
+    padding: 16px 22px; 
+    background: $orange;
+    &:hover, &:active {
+      background: $blue;
+    }
+  }
+}
+
+
+//----------------- Layout
+
+
+body {
+  background: #fff;
+  font-size: 16px;
+  @include ff-body;
+  color: $gray;
+}
+
+.container {
+  max-width: 1030px;
+  padding: 0 20px;
+  min-width: 600px;
+  margin: 0 auto;
+  display: block;
+  @include clearfix;
+}
+
+.main-content {
+  .container {
+    padding: 20px 20px;
+  }
+}
+
+.col3 {
+  @include clearfix;
+  .col {
+    float: left;
+    width: 30%;
+    margin-right: 4%;
+    &:nth-child(3n+3) {
+      margin-right: 0;
+    }
+  }
+}
+
+.col4 {
+  @include clearfix;
+  .col {
+    float: left;
+    width: 25%;
+  }
+}
+
+
+//----------------- Header
+
+header {
+  color: #fff;
+  text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2);
+
+  nav {
+    position: absolute;
+    z-index: 9000;
+    top: 0;
+    background: rgba( $green-light, .9 );
+    width: 100%;
+    height: 52px;
+    @include clearfix;
+    overflow: visible;
+
+    //- logo
+    .logo {
+      float: left;
+      display: inline-block;
+      width: 194px;
+      height: 102px;
+      margin-top:52px;
+      background: rgba( $green-light, .9 );
+      a {
+        margin-top: -40px;
+        display: block;
+        height: 209px;
+        width: 100%;
+        background: url('../images/logo-headstandard.png') no-repeat top center;
+      }
+    }
+
+    //- navigation
+    .sitenav {
+      li {
+        float: left;
+        a {
+          @include ff-body-bold;
+          @include fade;
+          color: #fff;
+          display: block;
+          padding:18px 14px;
+          font-size: 15px;
+          &:hover, &:active {
+            background: rgba(#000, 0.1)
+          }
+        }
+      }
+    }
+
+    //- cta
+    .promo {
+      @include ff-body-bold;
+      @include fade;
+      color: #fff;
+      float: right;
+      padding:18px 13px 18px 13px;
+      background: url('../images/icon-whitearrow.png') no-repeat right center;
+    }
+
+  }
+
+  //- header image
+  .masthead {
+    background-color: #000;
+    background-size: cover;
+    background-postion:top center;
+    height: 350px;
+    .overlay {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      padding: 200px 0 40px 0;
+      background: url('../images/overlay-headerimage.png') repeat-x bottom center;
+      h1 {
+        padding-bottom: 8px;
+      }
+      .subtext {
+        color: #fff;
+        @include ff-body-bold;
+        font-size: 18px;
+        opacity: 0.5;
+      }
+    }
+  }
+
+}
+
+
+//----------------- Modules
+
+a.internal-ad {
+  background: #000;
+  height: 280px;
+  display: block;
+  background-size: cover;
+  overflow: hidden;
+  @include fade;
+  .overlay {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    display: block;
+    background: url('../images/overlay-headerimage.png') repeat-x bottom center;
+    font-size: 40px;
+    @include ff-heading;
+    color: #fff;
+    padding: 200px 0 24px 0;
+    text-align: center;
+  }
+  &:hover, &:active {
+    opacity: 0.8;
+  }
+}
+
+section.upcoming-events {
+  h3 {
+    padding: 4px 0 14px 0;
+  }
+  .event {
+    height: 64px;
+    display: block;
+    padding: 9px 0;
+    color: $gray-light;
+    font-size: 14px;
+    @include fade;
+    @include clearfix;
+    .event-image {
+      @include fade;
+      width: 63px;
+      height: 63px;
+      border: 1px solid $blue;
+      background: url('../images/events/default-thumb.jpg');
+      float: left;
+      margin-right: 16px;
+      opacity: 0.9;
+    }
+    h4 {
+      padding-top: 2px;
+      color: $blue;
+      line-height: 20px;
+    }
+    &:hover, &:active {
+      color: $gray;
+      .event-image { opacity: 1; }
+    }
+  }
+}
+
+section.cta {
+  background: $green url('../images/transformationcta-bg.jpg') right top;
+  max-width: 640px;
+  padding: 30px 36px 20px 36px;
+  text-align: center;
+  h2 {
+    color: #fff;
+    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2);
+    padding-bottom: 14px;
+    text-align: left;
+  }
+  p {
+    text-align: left;
+    color: $green-dark;
+    padding-right: 120px;
+  }
+  // .btn.lrg {
+  //   position: absolute;
+  //   bottom: -50px;
+  //   margin: 0 auto 0 auto;
+  // }
+}
+
+//----------------- Footer
+
+footer {
+  background: $green;
+  color: $green-dark;
+  margin-top: 10px;
+  padding: 40px 0 60px 0;
+  font-size: 14px;
+
+  .list, .contact {
+    padding: 0 30px;
+    border-left: 1px solid rgba( $green-dark, .4 );
+    h4 {
+      color: $green-dark;
+      padding-bottom: 16px;
+    }
+    ul {
+      a {
+        color: #fff;
+        text-decoration: underline;
+        padding-bottom: 12px;
+        display: block;
+        &:hover, &:active {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .contact {
+    p {
+      line-height: normal;
+      padding-bottom: 12px;
+    }
+    .icon {
+      margin-right: 6px;
+    }
+  }
+
+  .copyright {
+    font-size: 12px;
+    display: block;
+    padding: 10px;
+  }
+
+}

@@ -3,23 +3,32 @@
 
 $orange: #f08d33;
 $blue: #3972b5;
+
+$green-light: #c2d526;
 $green: #a4bd2f;
 $green-dark: #39450e;
+
+$gray: #585858;
 $gray-light: #b8b8b8;
+
+//----------------- @FF
+
+@font-face {
+  font-family: 'packard_antiquebold';
+  src: url('../fonts/packardantique-bold.eot');
+  src: url('../fonts/packardantique-bold.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/packardantique-bold.woff') format('woff'),
+       url('../fonts/packardantique-bold.ttf') format('truetype'),
+       url('../fonts/packardantique-bold.svg#packard_antiquebold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
 //----------------- Mixins
 
 @mixin ff-heading {
-  @font-face {
-    font-family: 'packard_antiquebold';
-    src: url('packardantique-bold.eot');
-    src: url('packardantique-bold.eot?#iefix') format('embedded-opentype'),
-         url('packardantique-bold.woff') format('woff'),
-         url('packardantique-bold.ttf') format('truetype'),
-         url('packardantique-bold.svg#packard_antiquebold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-  }
+  font-family:'packard_antiquebold', Helvetica, Arial, sans-serif;
+  font-weight: normal;
 }
 
 @mixin ff-body {
@@ -47,14 +56,11 @@ $gray-light: #b8b8b8;
 
 // http://css-tricks.com/conditional-media-query-mixins/
 @mixin breakpoint($point) {
-  @if $point == lrg {
-    @media (max-width: 1080px) { @content; }
+  @if $point == desktop {
+    @media (max-width: 990px) { @content; }
   }
-  @if $point == med {
-    @media (max-width: 940px) { @content; }
-  }
-  @else if $point == sm {
-    @media (max-width: 740px) { @content; }
+  @else if $point == tablet {
+    @media (max-width: 800px) { @content; }
   }
   @else if $point == mobile {
     @media (max-width: 600px)  { @content; }
