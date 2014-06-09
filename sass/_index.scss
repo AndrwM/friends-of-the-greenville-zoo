@@ -14,11 +14,13 @@ header {
   //- slider
   .masthead.slider {
     height: 610px;
+    @include breakpoint(mobile) { height: 600px; }
     .slide {
       height: 100%;
       width: 100%;
       background-size: cover;
       background-postion:top center;
+      .overlay { @include breakpoint(mobile) { display: none; } }
       a.subtext {
         @include fade;
         &:hover, &:active {
@@ -31,13 +33,16 @@ header {
 }
 
 .index-feature {
-  overflow: visible;
   section {
     &.blog-teaser {
       margin-top: 10px;
       float: left;
       width: 25%;
       font-size: 14px;
+      @include breakpoint(tablet) {
+        width: auto;
+        float: none;
+      }
       h3 {
         margin-bottom: 10px;
       }
@@ -50,9 +55,16 @@ header {
     &.cta {
       margin-top: -36px;
       float: right;
-      width: 640px;
-      height: 182px;
+      width: 62%;
       margin-bottom: 60px;
+      @include breakpoint(tablet) {
+        width: auto;
+        float: none;
+      }
+      .btn.lrg {
+        margin-bottom: -40px;
+        @include breakpoint(tablet) { margin: 20px 0 0 0; }
+      }
     }
   }
 }

@@ -100,7 +100,7 @@ body {
 .container {
   max-width: 1030px;
   padding: 0 20px;
-  min-width: 600px;
+  min-width: 280px;
   margin: 0 auto;
   display: block;
   @include clearfix;
@@ -132,6 +132,15 @@ body {
   }
 }
 
+.col4 .col, .col3 .col {
+  @include breakpoint(tablet) {
+    width: auto;
+    float: none;
+    margin: 20px 0;
+
+  }
+}
+
 
 //----------------- Header
 
@@ -148,6 +157,7 @@ header {
     height: 52px;
     @include clearfix;
     overflow: visible;
+    @include breakpoint(mobile) { height: auto; }
 
     //- logo
     .logo {
@@ -157,17 +167,34 @@ header {
       height: 102px;
       margin-top:52px;
       background: rgba( $green-light, .9 );
+      @include breakpoint(mobile) {
+        background: none;
+        margin: 20px auto;
+        float: none;
+        display: block;
+        width: auto;
+        // Using !important to overwrite index logo
+        height: auto !important;
+      }
       a {
         margin-top: -40px;
         display: block;
         height: 209px;
         width: 100%;
         background: url('../images/logo-headstandard.png') no-repeat top center;
+        @include breakpoint(mobile) {
+          margin: 0;
+          width: auto;
+          height: 126px;
+          // Using !important to overwrite index logo
+          background-image: url('../images/logo-headmobile.png') !important;
+        }
       }
     }
 
     //- navigation
     .sitenav {
+      @include breakpoint(tablet) { display: none; }
       li {
         float: left;
         a {
@@ -184,6 +211,20 @@ header {
       }
     }
 
+    //- mobile navigation
+    .sitenav-mobile {
+      font-size: 30px;
+      margin: 15px 0 0;
+      float: left;
+      display: none;
+      @include breakpoint(tablet) {display: block; }
+      @include breakpoint(mobile) {
+        display: block;
+        width: 100%;
+        margin: 20px auto;
+      }
+    }
+
     //- cta
     .promo {
       @include ff-body-bold;
@@ -192,6 +233,7 @@ header {
       float: right;
       padding:18px 13px 18px 13px;
       background: url('../images/icon-whitearrow.png') no-repeat right center;
+      @include breakpoint(mobile) { display: none; }
     }
 
   }
@@ -202,12 +244,17 @@ header {
     background-size: cover;
     background-postion:top center;
     height: 350px;
+    @include breakpoint(mobile) { height: auto; }
     .overlay {
       position: absolute;
       width: 100%;
       bottom: 0;
       padding: 200px 0 40px 0;
       background: url('../images/overlay-headerimage.png') repeat-x bottom center;
+      @include breakpoint(mobile) {
+        position: relative;
+        padding: 250px 0 20px 0;
+      }
       h1 {
         padding-bottom: 8px;
       }
@@ -284,20 +331,28 @@ section.upcoming-events {
 }
 
 section.cta {
-  background: $green url('../images/transformationcta-bg.jpg') right top;
+  background: $green url('../images/transformationcta-bg.jpg') right top no-repeat;
   max-width: 640px;
   padding: 30px 36px 20px 36px;
   text-align: center;
+  @include breakpoint(tablet) { 
+    margin: -36px auto 50px auto;
+    background: $green;
+  }
   h2 {
     color: #fff;
     text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2);
     padding-bottom: 14px;
     text-align: left;
+    @include breakpoint(tablet) {
+      font-size: 30px;
+    }
   }
   p {
     text-align: left;
     color: $green-dark;
     padding-right: 120px;
+    @include breakpoint(tablet) { padding: 0; }
   }
   // .btn.lrg {
   //   position: absolute;
@@ -314,10 +369,16 @@ footer {
   margin-top: 10px;
   padding: 40px 0 60px 0;
   font-size: 14px;
+  @include breakpoint(tablet) { text-align: center; }
 
   .list, .contact {
     padding: 0 30px;
     border-left: 1px solid rgba( $green-dark, .4 );
+      @include breakpoint(tablet) {
+        border-left: none;
+        border-bottom: 1px solid rgba( $green-dark, .4 );
+        padding-bottom: 20px;
+      }
     h4 {
       color: $green-dark;
       padding-bottom: 16px;
